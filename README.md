@@ -17,3 +17,5 @@ xiii. Can control system power activity (Eg: Shutdown, restart, sleep)
 xiv. Can give System status (Eg: CPU usage, battery percentage, RAM used, etc.)
 xv. Can do basic calculations.
 xvi. Can open and close any application
+
+
