@@ -159,18 +159,13 @@ def sendwhatsmsg(phone_no, message):
 
 
 #################################################################################################################
-# def screenshot():
-#     name_img = tt.time() # will name the image using time module , will take current time as name 
-#     name_img = 'C:\\Users\\Mahima\\Desktop\\project\\fp\\screenshot\\{name_img}.png'
-#     img = pyautogui.screenshot(name_img)
-#     img.show()
 
 def screenshot():
     img = pyautogui.screenshot()
     speak("By what name should I save it?")
     ans=takeCommand()
     #Replace FolderPath with the path of folder where you want to save your screenshots in your computer 
-    ans="C:\\Users\\Mahima\\Desktop\\project\\fp\\screenshot"+ans+".png"
+    ans=" "+ans+".png" # add the path where you want to save the screenshot 
     img.save(ans)
     speak("Screenshot taken")
 
@@ -244,7 +239,7 @@ def takePicture():
     speak("Photo clicked")
     speak("By what name should I save it?")
     im=takeCommand()
-    image = "C:\\Users\\Mahima\\Desktop\\project\\fp\\captured_pictures"+im+".png"
+    image = "Path where you want to save the photo"+im+".png"
     cv2.imwrite(image, frame)
     cap.release()
     return image
@@ -252,40 +247,6 @@ def takePicture():
 
 ##################################################################################################
 
-
-
-# def camera():
-#     speak("Press space to take image and escape to stop Camera")
-#     Camera = cv2.VideoCapture(0)
-#     cv2.namedWindow("Camera")
-#     img_counter = 0
-#     while True:
-#         ret, frame = Camera.read()
-#         if not ret:
-#             print("failed to grab frame")
-#             break
-#         cv2.imshow("Camera", frame)
-#         k = cv2.waitKey(1)
-#         if k%256 == 27:
-#             speak("closing camera")
-#             break
-#         elif k%256 == 32:
-#             img_name = "camera{}.png".format(img_counter)
-#             #Replace CameraPath with the path of the folder where you want to save your photos taken by camera
-#             path="CameraPath"
-#             cv2.imwrite(os.path.join(path , img_name), frame)
-#             cv2.imwrite(img_name, frame)
-#             speak("{} image taken".format(img_name))
-#             img_counter += 1
-#     Camera.release()
-#     cv2.destroyAllWindows() 
-
-
-
-#https://api.openweathermap.org/data/2.5/weather?q={Bangalore}&units=imperial&appid={47865040d10346f46c21ac9b33ba84a3}
-    
-
-##############################################################################################################
 if __name__ == "__main__":
     # while True:
     #     query = takeCommand().lower()
@@ -399,16 +360,7 @@ if __name__ == "__main__":
                     results = wikipedia.summary(query, sentences=2)
                     speak('According to Wikipedia')
                     print(results)
-                    speak(results)
-
-                # #temperature and weather in bangalore
-                # elif "temperature" in query:
-                #     search = "temperature in bangalore"
-                #     url = f"https://www.google.com/search?q={search}"
-                #     r  = requests.get(url)
-                #     data = BeautifulSoup(r.text,"html.parser")
-                #     temp = data.find("div", class_ = "BNeawe").text
-                #     speak(f"current{search} is {temp}")
+                    speak(results)         
                 
             
                 elif "weather" in query:
@@ -420,29 +372,6 @@ if __name__ == "__main__":
                     speak(f"current{search} is {temp}")
 
 
-                # ##News Function : It will help you to get the top headlines in your chosen field
-                # elif 'news' in query:
-             
-                #     try:
-                #         jsonObj = urlopen('''https://newsapi.org/v2/top-headlines?country=in&apiKey=cfa45cded4034f2eb39a246d566c42c4''')
-                #         data = json.load(jsonObj)
-                #         i = 1
-                 
-                #         speak('here are some top news from the times of india')
-                #         print('''=============== TIMES OF INDIA ============'''+ '\n')
-                 
-                #         for item in data['articles']:
-                     
-                #             print(str(i) + '. ' + item['title'] + '\n')
-                #             print(item['description'] + '\n')
-                #             speak(str(i) + '. ' + item['title'] + '\n')
-                #             speak(item['description'] + '\n')
-                #             i += 1
-                #     except Exception as e:
-                 
-                #          print(str(e))
-                
-                
                 #time 
                 elif("time" in query):
                     query=query.replace("what is","")
@@ -502,8 +431,8 @@ if __name__ == "__main__":
                 
                 elif 'mail' in query:
                     email_list = {
-                        'test mail':'mahimarawat22@gmail.com',
-                        'mahima' :'mahiamr8420@gmail.com'
+                        'test mail':'',
+                        'mahima' :''  
                     }
                     try: 
                         speak("To whom you want to send the mail?")
@@ -526,7 +455,7 @@ if __name__ == "__main__":
                 
                 elif 'message' in query:
                     user_name = {
-                        'Friend' : '+91 82966 00633'
+                        'Friend' : '+91 xxxxxxxxx'
                     }
                     try: 
                         speak("To whom you want to send the whats app message?")
@@ -569,12 +498,12 @@ if __name__ == "__main__":
                     speak(joke)
                     print
 
-                # elif "voice" in query:
-                #     if 'female' in query:
-                #         engine.setProperty('voice', voices[1].id)
-                #     else:
-                #         engine.setProperty('voice', voices[0].id)
-                #     speak("Hello, I have switched my voice. How is it?")
+                elif "voice" in query:
+                     if 'female' in query:
+                         engine.setProperty('voice', voices[1].id)
+                     else:
+                        engine.setProperty('voice', voices[0].id)
+                        speak("Hello, I have switched my voice. How is it?")
                 
             #shut down
 
