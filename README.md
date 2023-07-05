@@ -3,6 +3,7 @@ In this project, numerous python libraries and modules are used
 
 
 #This virtual assistant can perform numerous tasks as listed below
+
 i. Can send emails.
 ii. Can open any IDE.
 iii. Can give weather updates.
